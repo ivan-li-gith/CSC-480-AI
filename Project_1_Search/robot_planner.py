@@ -105,6 +105,11 @@ def dfs(grid, starting_pos, dirty_cells):
     return None, nodes_generated, nodes_expanded
 
 def ucs(grid, starting_pos, dirty_cells):
+    """
+    Uniform-Cost Search algorithm to clean dirty cells.
+    Args: grid (list), starting_pos (tuple), dirty_cells (set)
+    Returns: tuple: (path, nodes_generated, nodes_expanded)
+    """
     start_state = (starting_pos, frozenset(dirty_cells))
     queue = [(0, start_state, [])] # (cost, state, path)
     visited = {}
@@ -141,6 +146,9 @@ def ucs(grid, starting_pos, dirty_cells):
 
 
 def main():
+    """
+    Parses command-line arguments and runs the selected algorithm.
+    """
     if len(sys.argv) != 3:
         print("Usage: python planner.py [algorithm] [world-file]")
         sys.exit(1)
